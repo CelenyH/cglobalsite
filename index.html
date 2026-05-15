@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C Global Language & Communication</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f4f6fb;
+  color: #1f2937;
+}
+
+.logo {
+  width: 260px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  color: white;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #c4b5fd;
+}
+
+header {
+      background: linear-gradient(
+135deg,
+#0f172a 0%,
+#1e1b4b 40%,
+#4338ca 100%
+);
+      color: white;
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+.hero {
+  background: linear-gradient(
+    135deg,
+    #1f245c 0%,
+    #322f8f 50%,
+    #4f46e5 100%
+  );
+
+  color: white;
+  min-height: 72vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem 2rem;
+  padding-top: 7rem;
+
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 300px;
+  text-align: center;
+}
+
+.hero-text p {
+  margin: auto;
+}
+
+.hero-text h1 {
+  font-size: 4.5rem;
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 520px;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.whatsapp-note {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.cta {
+  padding: 1rem 1.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.primary {
+  background: white;
+  color: #111827;
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.secondary {
+  border: 1.5px solid rgba(255,255,255,0.7);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.secondary:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-3px);
+}
+
+.hero-visual {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+ transform: none;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.12) 0%,
+    rgba(79,70,229,0.10) 35%,
+    transparent 75%
+  );
+  border-radius: 50%;
+  filter: blur(25px);
+  z-index: 0;
+}
+
+.hero-logo {
+  width: 480px;
+
+  filter:
+    brightness(1.15)
+    contrast(1.12)
+    drop-shadow(0 0 18px rgba(255,255,255,0.18))
+    drop-shadow(0 15px 40px rgba(0,0,0,0.55));
+
+  animation: float 5s ease-in-out infinite;
+}
+
+.floating {
+  position: absolute;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 500;
+  animation: floatWords 6s ease-in-out infinite;
+}
+
+.hello {
+  top: 10%;
+  left: 5%;
+}
+
+.hola {
+  bottom: 15%;
+  right: 10%;
+}
+
+.salut {
+  top: 20%;
+  right: 5%;
+}
+
+.brand {
+  letter-spacing: 3px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes floatWords {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background: rgba(15, 23, 42, 0.97);
+    padding: 1rem;
+    border-radius: 16px;
+    width: 220px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+.hero {
+    padding-top: 5rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    flex-direction: column;
+  }
+
+  .hero-text h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .about-premium {
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
+
+.about-premium {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  padding: 3rem;
+}
+
+.about-left img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #4f46e5;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.about-right {
+  flex: 1;
+}
+
+.about-right h2 {
+  margin-bottom: 0.2rem;
+}
+
+.about-right h3 {
+  font-weight: 500;
+  color: #4f46e5;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.about-right p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.what-you-gain .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tags {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tags span {
+  background: #eef2ff;
+  color: #3730a3;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+     section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+    }
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.services .card {
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.services .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(79,70,229,0.18);
+  border: 1px solid rgba(79,70,229,0.15);
+}
+
+.services h2 {
+  margin-bottom: 2rem;
+}
+
+.services h3 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+  color: #1e1b4b;
+}
+
+.services p {
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.service-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  margin-top: 0;
+}
+
+.service-details.active {
+  max-height: 1000px;;
+  margin-top: 1.5rem;
+}
+
+.service-details ul {
+  padding-left: 1.2rem;
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.service-button {
+  margin-top: 1rem;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.service-button:hover {
+  background: #3730a3;
+}
+
+.price {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.language-tag {
+  display: inline-block;
+  background: #eef2ff;
+  color: #3730a3;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-right: 0.4rem;
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+
+.english {
+  border-left: 4px solid #2563eb;
+}
+
+.french {
+  border-left: 4px solid #dc2626;
+}
+
+.spanish {
+  border-left: 4px solid #f59e0b;
+}
+
+.plan-prices {
+  margin-top: 0.5rem;
+  line-height: 1.8;
+}
+
+.plan-prices span {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.book-button {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  background: #111827;
+  color: white;
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.book-button:hover {
+  transform: translateY(-3px);
+}
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    .testimonial {
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+.testimonials h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.testimonial {
+  text-align: center;
+  line-height: 1.8;
+}
+
+.concept-section {
+  background: #061126;
+  color: white;
+  padding: 5rem 2rem;
+}
+
+.concept-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.concept-image {
+  flex: 1;
+  min-width: 320px;
+}
+
+.concept-image img {
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+.concept-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.concept-label {
+  color: #d4af37;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.concept-text h2 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.concept-text p {
+  line-height: 1.8;
+  opacity: 0.9;
+  margin-bottom: 1.2rem;
+}
+
+.highlight-blue {
+  color: #3b82f6;
+}
+
+.highlight-red {
+  color: #ef4444;
+}
+
+.highlight-gold {
+  color: #fbbf24;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 65px;
+  height: 65px;
+  background: #25D366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  z-index: 999;
+  transition: 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+
+.concept-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.concept-tags span {
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 768px) {
+
+  .concept-text h2 {
+    font-size: 2.2rem;
+  }
+
+}
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="nav-container">
+
+    <div class="nav-logo">
+      C GLOBAL
+    </div>
+
+    <button class="menu-toggle" onclick="toggleMenu()">
+      ☰
+    </button>
+
+    <div class="nav-links">
+
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Testimonials</a>
+
+      <a href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20C%20Global%20services."
+         target="_blank">
+
+        Contact on WhatsApp
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+
+<header class="hero">
+
+  <div class="hero-content">
+
+    <div class="hero-text">
+
+      <div class="brand">C GLOBAL</div>
+
+      <h1>Communicate Beyond Borders</h1>
+
+      <p>
+        Personalized English lessons designed to help you speak confidently,
+        grow professionally, and connect globally.
+      </p>
+
+      <div class="hero-buttons">
+
+<p class="whatsapp-note">
+  After contacting me on WhatsApp, I will help you choose the best plan,
+  schedule your sessions, and answer your questions personally.
+</p>
+
+        <a class="cta primary"
+           href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20C%20Global.">
+          Contact on WhatsApp
+        </a>
+
+        <a class="cta secondary" href="#about">
+          Learn More
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+      <img src="logo.png"
+           alt="C Global logo"
+           class="hero-logo">
+
+      <div class="floating hello">Hello</div>
+      <div class="floating hola">Hola</div>
+      <div class="floating salut">Salut</div>
+
+    </div>
+
+  </div>
+
+</header>
+
+<section id="about">
+  <div class="card">
+    <h2>About C Global</h2>
+    <p>C Global: See Global. C’est Global. Sé Global. Three languages in the name of this project. This a plan focused on language learning and communication. Through personalized language lessons, the goal is to help students gain confidence, improve fluency, and communicate naturally in real-life situations.</p>
+    <p>This project also reflects my view of language learning as a way of envisioning the world in a different way. This process promotes thriving in personal and professional life achieving your objectives.</p>
+  </div>
+</section>
+
+<section>
+
+  <div class="card about-premium">
+
+    <div class="about-left">
+      <img src="cele.jpg" alt="Celeny profile">
+    </div>
+
+    <div class="about-right">
+
+      <h2>About Me</h2>
+
+      <h3>Multilingual Instructor | Communication & Fluency</h3>
+
+      <p>
+        Hey there! I’m Celeny — a multilingual instructor with academic training from Universidad de Antioquia and experience teaching students from different backgrounds and levels.
+      </p>
+
+      <p>
+My approach is practical, personalized, and focused on real communication. I help students build confidence, improve fluency, and develop strong English communication skills through interactive and supportive lessons.
+      </p>
+
+      <p>
+        I also offer conversational practice in French and Spanish, encouraging students to use language confidently in a natural and engaging way.
+      </p>
+
+      <p>
+       My goal is simple: help you express yourself clearly and confidently in personal, academic, or professional situations.
+      </p>
+
+      <div class="tags">
+        <span>✔ Real Communication</span>
+        <span>✔ Confidence & Fluency</span>
+        <span>✔ Personalized Learning</span>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<section class="what-you-gain">
+  <h2>What You Gain</h2>
+  <div class="grid">
+    <div class="card">✔ Confidence expressing yourself</div>
+    <div class="card">✔ Communication skills beyond the classroom</div>
+    <div class="card">✔ Language development for academic and professional growth</div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <h2>Services</h2>
+
+  <div class="grid">
+
+<div class="card">
+
+  <h3>🌍 English Lessons</h3>
+
+  <p>
+    Personalized English coaching designed to help language learners
+    improve fluency, confidence, and real communication skills step by step.
+  </p>
+
+  <button class="service-button"
+          onclick="toggleService('english-details')">
+
+    View Plans ▼
+
+  </button>
+
+  <div class="service-details"
+       id="english-details">
+
+    <ul>
+
+<li>
+
+  <strong>Starter Plan:</strong><br>
+  4 sessions per month
+
+  <div class="plan-prices">
+    <span>Online: $160.000 (COP)</span><br>
+    <span>In-Person: $200.000 (COP)</span>
+  </div>
+
+</li>
+
+<li>
+
+  <strong>Growth Plan:</strong><br>
+  8 sessions per month
+
+  <div class="plan-prices">
+    <span>Online: $300.000 (COP)</span><br>
+    <span>In-Person: $380.000 (COP)</span>
+  </div>
+
+</li>
+
+<li><strong>Available in</strong> Caldas - Sabaneta</li>
+
+<li><strong>Session Duration:</strong> 60 minutes</li>
+
+<li>
+  <strong>Description:</strong>
+
+  <ul class="mini-list">
+    <li>Personalized lessons</li>
+    <li>Goal-based guidance</li>
+    <li>Speaking practice</li>
+    <li>Online learning materials</li>
+  </ul>
+
+</li>
+
+</ul>
+
+    <a class="book-button"
+       href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20English%20Lessons.%0A%0A•%20Student%20age:%0A•%20Online%20or%20In-person:%0A•%20Main%20goal:%0A•%20Preferred%20schedule:"
+       target="_blank">
+
+       Schedule your sessions
+
+    </a>
+
+  </div>
+
+</div>
+
+   <div class="card">
+
+  <h3>🚀 Academic Support</h3>
+
+  <p>
+    Personalized and supportive English guidance for kids and teens to improve
+        school performance, communication skills, and confidence.
+  </p>
+
+  <button class="service-button"
+          onclick="toggleService('academic-details')">
+
+    View Plans ▼
+
+  </button>
+
+  <div class="service-details"
+       id="academic-details">
+
+    <ul>
+
+<li>
+
+  <strong>Support Plan:</strong><br>
+  4 sessions per month
+
+  <div class="plan-prices">
+    <span>Online: $160.000 (COP)</span><br>
+    <span>In-Person: $200.000 (COP)</span>
+  </div>
+
+</li>
+
+<li>
+
+  <strong>Progress Plan:</strong><br>
+  8 sessions per month
+
+  <div class="plan-prices">
+    <span>Online: $300.000 (COP)/month</span><br>
+    <span>In-Person: $380.000 (COP)/month</span>
+  </div>
+
+</li>
+
+<li><strong>Available in</strong> Caldas - Sabaneta</li>
+
+<li><strong>Session Duration:</strong> 60 minutes</li>
+<li>
+  <strong>Description:</strong>
+
+  <ul class="mini-list">
+    <li>Academic reinforcement</li>
+    <li>Support with challenging topics</li>
+    <li>Speaking practice</li>
+    <li>Confidence building</li>
+  </ul>
+
+</li>
+
+</ul>
+
+    <a class="book-button"
+       href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20Academic%20Support%20plans.%0A%0A•%20Student%20age:%0A•%20Online%20or%20In-person:%0A•%20Main%20goal:%0A•%20Preferred%20schedule:"
+       target="_blank">
+
+       Schedule your sessions
+
+    </a>
+
+  </div>
+
+</div>
+
+<div class="card">
+
+  <h3>🎤 Language Practice</h3>
+
+  <p>
+    Guided speaking sessions in English, French or Spanish focused on improving fluency and confidence for
+        interviews, presentations, travel, work, or everyday conversations.
+  </p>
+
+  <button class="service-button"
+          onclick="toggleService('practice-details')">
+
+    View Plans ▼
+
+  </button>
+
+  <div class="service-details"
+       id="practice-details">
+
+    <ul>
+<li>
+  <strong>Languages Available:</strong><br>
+
+  <span class="language-tag english">EN English</span>
+  <span class="language-tag french">FR French</span>
+  <span class="language-tag spanish">ES Spanish</span>
+
+</li>
+      <li>
+  <strong>Online Conversation Session:</strong>
+  Flexible one-time conversation practice<br>
+  <span class="price">$45.000 (COP)/session</span>
+</li>
+
+<li>
+  <strong>Online Speaking Coaching:</strong>
+  Personalized coaching for job interviews or academic presentations
+  (2-session package)<br>
+  <span class="price">$80.000 (COP) /package</span>
+</li>
+      <li><strong>Session Duration:</strong> 50 minutes</li>
+      <li><strong>Includes:</strong> personalized speaking practice focused on interviews, presentations, travel, work situations, or specific communication goals</li>
+    </ul>
+
+    <a class="book-button"
+       href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20Language%20Practice%20sessions.%0A%20%0A•%20In%20English,%20French%20or%20Spanish?%0A•%20For%20an%20Adult?%20Teen?%20or%20Kid?%0A•%20Goal:%20Interview?%20Presentation?%20Other?%0A•%20Preferred%20Online%20schedule:"
+       target="_blank">
+
+       Schedule your session
+
+    </a>
+
+  </div>
+
+</div>
+
+</section>
+
+<section class="concept-section">
+
+  <div class="concept-container">
+
+    <div class="concept-image">
+      <img src="concept.jpg" alt="C Global concept">
+    </div>
+
+    <div class="concept-text">
+
+      <div class="concept-label">
+        THE C GLOBAL CONCEPT
+      </div>
+
+      <h2>
+        <span class="highlight-blue">See</span> Global(ly).<br>
+        <span class="highlight-red">C’est</span> Global.<br>
+        <span class="highlight-gold">Sé</span> Global.
+      </h2>
+
+      <p>
+        C Global is more than language learning.
+        It is about developing confidence, global communication,
+        cultural understanding, and meaningful human connection.
+      </p>
+
+      <p>
+        The goal is to help people connect with the world
+        through English, French, and Spanish languages,
+        promoting professional and personal growth, and become part of something bigger.
+      </p>
+
+      <div class="concept-tags">
+        <span>Connection</span>
+        <span>Communication</span>
+        <span>Confidence</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<section id="testimonials" class="testimonials">
+
+  <h2>Testimonials</h2>
+
+  <div class="grid">
+
+    <div class="card testimonial">
+      "I feel much more confident speaking English now.
+      Classes are practical and motivating."
+    </div>
+
+    <div class="card testimonial">
+      "A great learning experience.
+      Classes are clear and adapted to my needs."
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+  <div class="card" style="text-align:center;">
+    <h2>Work With Me</h2>
+    <p>Start improving your communication and access new opportunities.</p>
+    <a class="cta"
+   href="https://wa.me/573215432240?text=🎤%20Hello!%20I%20would%20like%20information%20about%20C%20Global%20services."
+   target="_blank">
+
+   Contact on WhatsApp
+
+</a>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 C Global</p>
+</footer>
+
+<script>
+
+function toggleMenu() {
+
+  const navLinks =
+    document.querySelector('.nav-links');
+
+  navLinks.classList.toggle('active');
+
+}
+
+function toggleService(id) {
+
+  const allServices =
+    document.querySelectorAll('.service-details');
+
+  allServices.forEach(service => {
+
+    if (service.id !== id) {
+      service.classList.remove('active');
+    }
+
+  });
+
+  const currentService =
+    document.getElementById(id);
+
+  currentService.classList.toggle('active');
+
+}
+
+</script>
+
+<a href="https://wa.me/573215432240"
+   class="whatsapp-float"
+   target="_blank">
+
+  💬
+
+</a>
+
+</body>
+</html>
