@@ -9,7 +9,11 @@
   <title>C Global Language & Communication</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <style>
-    body {
+    html, body {
+  overflow-x: hidden;
+}
+
+body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   background: #f4f6fb;
@@ -286,17 +290,23 @@ header {
   }
 
   .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    background: rgba(15, 23, 42, 0.97);
-    padding: 1rem;
-    border-radius: 16px;
-    width: 220px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-  }
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  right: 10px;
+
+  background: rgba(15, 23, 42, 0.97);
+
+  padding: 1rem;
+
+  border-radius: 16px;
+
+  width: calc(100% - 40px);
+  max-width: 220px;
+
+  box-sizing: border-box;
+}
 
   .nav-links.active {
     display: flex;
