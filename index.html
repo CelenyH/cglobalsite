@@ -1872,6 +1872,44 @@ function toggleMenu() {
 
 }
 
+const navLinks =
+  document.querySelector('.nav-links');
+
+const menuToggle =
+  document.querySelector('.menu-toggle');
+
+const navItems =
+  document.querySelectorAll('.nav-links a');
+
+navItems.forEach(item => {
+
+  item.addEventListener('click', () => {
+
+    navLinks.classList.remove('active');
+
+  });
+
+});
+
+document.addEventListener('click', (event) => {
+
+  const clickedInsideMenu =
+    navLinks.contains(event.target);
+
+  const clickedMenuButton =
+    menuToggle.contains(event.target);
+
+  if (
+    !clickedInsideMenu &&
+    !clickedMenuButton
+  ) {
+
+    navLinks.classList.remove('active');
+
+  }
+
+});
+
 function toggleService(id) {
 
   const allServices =
@@ -1944,9 +1982,15 @@ setLanguage('en');
 
 </script>
 
-<a href="https://wa.me/573215432240"
-   class="whatsapp-float"
+<a href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20C%20Global%20Learning%20Options."
+   class="whatsapp-float whatsapp-link"
    target="_blank">
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+       alt="WhatsApp"
+       class="whatsapp-icon">
+
+</a>
 
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
        alt="WhatsApp"
