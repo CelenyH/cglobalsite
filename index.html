@@ -36,23 +36,54 @@ body {
 .nav-container {
   max-width: 1200px;
   margin: auto;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+  flex-wrap: nowrap;
 }
 
-.nav-logo {
+ .nav-logo {
   color: white;
   font-weight: 700;
   letter-spacing: 2px;
   font-size: 1rem;
 }
 
-.nav-links {
+.nav-logo {
+  flex-shrink: 0;
+}
+
+.language-toggle {
   display: flex;
-  gap: 2rem;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.language-toggle button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  opacity: 0.75;
+  transition: 0.3s ease;
+}
+
+.language-toggle {
+  flex-shrink: 0;
+}
+
+.language-toggle button:hover {
+  opacity: 1;
+}
+
+.lang-es {
+  display: none;
 }
 
 .menu-toggle {
@@ -64,7 +95,21 @@ body {
   cursor: pointer;
 }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1.5rem;
+
+  white-space: nowrap;
+}
+
 .nav-links a {
+  display: flex;
+  align-items: center;
+  height: 42px;
+
   color: white;
   text-decoration: none;
   font-size: 0.95rem;
@@ -92,7 +137,7 @@ header {
     135deg,
     #1f245c 0%,
     #322f8f 50%,
-    #4f46e5 100%
+    #14213d 100%
   );
 
   color: white;
@@ -129,10 +174,15 @@ header {
 }
 
 .hero-text h1 {
-  font-size: 4.5rem;
-  line-height: 0.95;
+  font-size: clamp(2.5rem, 6vw, 4.8rem);
+  line-height: 1.05;
   margin-bottom: 1.5rem;
   letter-spacing: -2px;
+
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-text p {
@@ -159,11 +209,30 @@ header {
 }
 
 .cta {
-  padding: 1rem 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  padding: 0.7rem 1.2rem;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s ease;
+}
+
+.nav-cta {
+  padding: 0.45rem 1.1rem;
+  min-height: 38px;
+}
+
+.cta {
+  position: relative;
+  top: -1px;
+}
+
+.nav-whatsapp-icon {
+  display: block;
 }
 
 .primary {
@@ -259,6 +328,39 @@ header {
   opacity: 0.8;
 }
 
+.about-card {
+  text-align: center;
+}
+
+.about-logo {
+  width: 240px;
+ }
+
+.about-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.mini-list li {
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: 0.15rem;
+  line-height: 1.4;
+}
+
+.mini-list li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -313,10 +415,11 @@ header {
   }
 
 .hero {
-    padding-top: 8rem;
-    padding-bottom: 4rem;
-    min-height: auto;
-  }
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+  min-height: auto;
+  text-align: center;
+}
 
 .hero-image {
   width: 100%;
@@ -347,11 +450,6 @@ header {
     line-height: 1.6;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-  }
-
-.hero {
-    padding-top: 5rem;
-    text-align: center;
   }
 
 .hero-text h1 {
@@ -412,7 +510,7 @@ header {
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid #4f46e5;
+  border: 3px solid rgba(20, 33, 61, 0.85);
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
@@ -426,7 +524,7 @@ header {
 
 .about-right h3 {
   font-weight: 500;
-  color: #4f46e5;
+  color: #14213d;
   margin-top: 0;
   margin-bottom: 1rem;
 }
@@ -458,7 +556,7 @@ header {
 
 .tags span {
   background: #eef2ff;
-  color: #3730a3;
+  color: #14213d;
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
   font-size: 0.85rem;
@@ -488,6 +586,11 @@ header {
   transform: translateY(-5px);
 }
 
+.service-details strong {
+  color: #374151;
+  font-weight: 700;
+}
+
 .services .card {
   transition: 0.3s ease;
   border: 1px solid transparent;
@@ -506,7 +609,7 @@ header {
 .services h3 {
   font-size: 1.35rem;
   margin-bottom: 1rem;
-  color: #1e1b4b;
+  color: #14213d;
 }
 
 .services p {
@@ -517,24 +620,35 @@ header {
 .service-details {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease;
+
+  transition:
+    max-height 0.4s ease,
+    padding 0.3s ease,
+    margin-top 0.3s ease;
+
   margin-top: 0;
+  padding-bottom: 0;
 }
 
 .service-details.active {
-  max-height: 1000px;;
+  max-height: 1200px;
+
   margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .service-details ul {
-  padding-left: 1.2rem;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+
   line-height: 1.8;
   color: #4b5563;
 }
 
 .service-button {
   margin-top: 1rem;
-  background: #4f46e5;
+  background: #3b4cca;
   color: white;
   border: none;
   padding: 0.8rem 1.2rem;
@@ -545,14 +659,14 @@ header {
 }
 
 .service-button:hover {
-  background: #3730a3;
+  background: #1d2f53;
 }
 
 .price {
   display: inline-block;
   margin-top: 0.3rem;
   font-weight: 600;
-  color: #4f46e5;
+  color: #1f2937;
 }
 
 .language-tag {
@@ -585,20 +699,30 @@ header {
 }
 
 .plan-prices span {
-  color: #4f46e5;
+  color: #1f2937;
   font-weight: 600;
 }
 
 .book-button {
-  display: inline-block;
-  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
   text-decoration: none;
   background: #111827;
   color: white;
-  padding: 0.9rem 1.4rem;
+
+  padding: 0.45rem 1.1rem;
+
   border-radius: 999px;
   font-weight: 600;
   transition: 0.3s ease;
+
+ }
+
+.service-details .book-button {
+  margin-top: 1.2rem;
 }
 
 .book-button:hover {
@@ -768,19 +892,59 @@ header {
 
     <div class="nav-links">
 
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#testimonials">Testimonials</a>
+      <a href="#about">
+  <span class="lang-en">
+About us
+  </span>
+  <span class="lang-es">
+Conócenos
+  </span>
+</a>
+      <a href="#services">
+  <span class="lang-en">
+Learning Options
+  </span>
+  <span class="lang-es">
+Opciones de Aprendizaje
+  </span>
+</a>
+      <a href="#testimonials">
+ <span class="lang-en">
+  Experiences
+</span>
 
-      <a href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20C%20Global%20services."
-         target="_blank">
+<span class="lang-es">
+  Experiencias
+</span>
 
-        Contact
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-     alt="WhatsApp"
-     class="nav-whatsapp-icon">
-      </a>
+</a>
+
+<a class="book-button whatsapp-link"
+   href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20C%20Global%20learning%20Options."
+   target="_blank">
+
+  <span class="lang-en">Contact</span>
+  <span class="lang-es">Contactar</span>
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+       alt="WhatsApp"
+       class="nav-whatsapp-icon">
+
+</a>
+
     </div>
+
+<div class="language-toggle">
+
+  <button onclick="setLanguage('en')">
+    EN
+  </button>
+
+  <button onclick="setLanguage('es')">
+    ES
+  </button>
+
+</div>
 
  </nav>
 
@@ -792,28 +956,67 @@ header {
 
       <div class="brand">C GLOBAL</div>
 
-      <h1>Communicate with Confidence</h1>
+<h1>
+
+  <span class="lang-en">
+    Communicate with Confidence
+  </span>
+
+  <span class="lang-es">
+    Comunícate con Confianza
+  </span>
+
+</h1>
 
 <p>
-  Personalized language guidance focused on confidence, fluency, and real communication for personal, academic, and professional growth.
+
+  <span class="lang-en">
+    Personalized language guidance focused on confidence, fluency, and real communication for personal, academic, and professional growth.
+  </span>
+
+  <span class="lang-es">
+    Acompañamiento personalizado en idiomas enfocado en confianza, fluidez y comunicación real para el crecimiento personal, académico y profesional.
+  </span>
+
 </p>
 
 <p class="whatsapp-note">
-  Contact me and I will answer your questions, help you choose the best plan and schedule your sessions.
+
+  <span class="lang-en">
+    Contact me and I will answer your questions, help you choose the best plan and schedule your sessions.
+  </span>
+
+  <span class="lang-es">
+    Contáctame y responderé tus preguntas, te ayudaré a elegir el mejor plan y a programar tus sesiones.
+  </span>
+
 </p>
 
 <div class="hero-buttons">
 
-  <a class="cta primary"
-     href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20C%20Global.">
-    Contact
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-     alt="WhatsApp"
-     class="nav-whatsapp-icon">
+  <a class="cta primary whatsapp-link"
+     href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20C%20Global%20learning%20Options."
+     target="_blank">
+
+    <span class="lang-en">
+      Contact
+    </span>
+
+    <span class="lang-es">
+      Contactar
+    </span>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+         alt="WhatsApp"
+         class="nav-whatsapp-icon">
+
   </a>
 
   <a class="cta secondary" href="#about">
-    Learn More
+
+    <span class="lang-en">Learn More</span>
+    <span class="lang-es">Conocer Más</span>
+
   </a>
 
 </div>
@@ -837,12 +1040,69 @@ header {
 </header>
 
 <section id="about">
-  <div class="card">
-    <h2>About C Global</h2>
-    <p>C Global: See Global(ly). C’est Global. Sé Global.</p>
-Three languages are part of the identity behind this project, reflecting a vision of communication, confidence, and connection through language.</p>
-    <p>C Global offers personalized language guidance focused on real communication, fluency, and confidence-building through practical and engaging learning experiences.</p>
-<p>This project represents the idea that language learning helps us communicate confidently, opening new personal, academic, and professional opportunities while connecting with the world in a meaningful way.</p>
+
+  <div class="card about-premium">
+
+    <div class="about-left">
+
+      <img src="logo.png"
+           alt="C Global Logo"
+           class="about-logo">
+
+    </div>
+
+    <div class="about-right">
+
+      <h2>
+
+        <span class="lang-en">
+          Meet C Global
+        </span>
+
+        <span class="lang-es">
+          Conoce C Global
+        </span>
+
+      </h2>
+
+      <p>
+        C Global: See Global(ly). C’est Global. Sé Global.
+      </p>
+
+<p>
+
+  <span class="lang-en">
+    Three languages are part of the identity behind this project, reflecting a vision of communication, confidence, and connection through language.
+
+  </span>
+
+  <span class="lang-es">
+Tres idiomas forman parte de la identidad de este proyecto, reflejando una visión de comunicación, confianza y conexión a través del lenguaje.
+  </span>
+
+</p>
+    <p>
+  <span class="lang-en">
+C Global offers personalized language guidance focused on real communication, fluency, and confidence-building through practical and engaging learning experiences.
+</span>
+
+  <span class="lang-es">
+C Global brinda apoyo personalizado en el aprendizaje de idiomas, ayudando a desarrollar comunicación real, fluidez y confianza a través de experiencias de aprendizaje prácticas y participativas.
+</span>
+
+</p>
+<p>
+  <span class="lang-en">
+This project represents the idea that language learning helps us communicate confidently, opening new personal, academic, and professional opportunities while connecting with the world in a meaningful way.
+</span>
+
+  <span class="lang-es">
+Este proyecto nace de la idea de que aprender idiomas nos permite comunicarnos con confianza, abrir nuevas oportunidades personales, académicas y profesionales, y conectar con el mundo de una forma significativa.
+
+</span>
+
+</p>
+
   </div>
 </section>
 
@@ -856,121 +1116,338 @@ Three languages are part of the identity behind this project, reflecting a visio
 
     <div class="about-right">
 
-      <h2>About Me</h2>
+      <h2>
+  <span class="lang-en">
+Meet Your Instructor
+</span>
 
-      <h3>Multilingual Instructor | Communication & Fluency</h3>
+  <span class="lang-es">
+Conoce a tu instructora
+</span>
+
+</h2>
+
+      <h3>
+
+  <span class="lang-en">
+Language Instructor | Confidence & Fluency
+</span>
+
+  <span class="lang-es">
+Profesora de idiomas | Confianza & fluidez
+</span>
+
+</h3>
 
       <p>
+  <span class="lang-en">
         Hey there! I’m Celeny — a multilingual instructor with academic training from Universidad de Antioquia and experience teaching students from different backgrounds and levels.
+</span>
+
+  <span class="lang-es">
+        ¡Hola! Soy Celeny, instructora de idiomas formada en la Universidad de Antioquia, con experiencia enseñando a estudiantes de diferentes niveles y trayectorias.
+</span>
       </p>
 
       <p>
+
+  <span class="lang-en">
 My approach is practical, personalized, and focused on real communication. I help students build confidence, improve fluency, and develop strong English communication skills through interactive and supportive lessons.
+</span>
+
+  <span class="lang-es">
+Mi enfoque es práctico, personalizado y centrado en la comunicación auténtica. Ayudo a cada estudiante a desarrollar confianza, mejorar su fluidez y fortalecer sus habilidades comunicativas mediante clases interactivas y en un ambiente de apoyo.
+</span>
+
       </p>
 
       <p>
-        I also offer conversational practice in French and Spanish, encouraging students to use language confidently in a natural and engaging way.
+  <span class="lang-en">
+        We can also practice French and Spanish together in a relaxed environment where you can build confidence and communicate naturally.
+</span>
+
+  <span class="lang-es">
+        También podemos practicar francés y español juntos en un ambiente relajado donde podrás ganar confianza y comunicarte de forma natural.
+</span>
       </p>
 
       <p>
+  <span class="lang-en">
        My goal is simple: help you express yourself clearly and confidently in personal, academic, or professional situations.
+</span>
+
+  <span class="lang-es">
+Mi objetivo es simple: ayudarte a comunicarte con claridad y confianza en diferentes situaciones de tu vida personal, académica o profesional.
+</span>
       </p>
 
       <div class="tags">
-        <span>✔ Real Communication</span>
-        <span>✔ Confidence & Fluency</span>
-        <span>✔ Personalized Learning</span>
+         <span class="lang-en">
+✔ Real Communication
+        </span>
+
+ <span class="lang-es">
+✔Comunicación auténtica
+        </span>
+
+<span class="lang-en">
+✔ Confidence & Fluency
+        </span>
+
+<span class="lang-es">
+✔ Confianza & Fluidez
+        </span>
+
+<span class="lang-en">
+✔ Personalized Learning
+        </span>
+
+  <span class="lang-es">
+✔ Aprendizaje Personalizado
+</span>
       </div>
 
-    </div>
-  </div>
+</div>
 
 </section>
 
 <section class="what-you-gain">
-  <h2>What You Gain</h2>
+  <h2>
+  <span class="lang-en">What You Gain</span>
+  <span class="lang-es">Lo que obtienes</span>
+</h2>
+
   <div class="grid">
-    <div class="card">✔ Confidence expressing yourself</div>
-    <div class="card">✔ Communication skills beyond the classroom</div>
-    <div class="card">✔ Language development for academic and professional growth</div>
+    <div class="card">
+  <span class="lang-en">
+✔ Confidence expressing yourself naturally
+</span>
+
+  <span class="lang-es">
+✔ Confianza para comunicarte con naturalidad
+</span>
+    </div>
+
+    <div class="card">
+  <span class="lang-en">
+✔ Practical communication skills
+</span>
+
+  <span class="lang-es">
+✔ Habilidades comunicativas prácticas
+</span>
+    </div>
+
+    <div class="card">
+  <span class="lang-en">
+✔ Academic & professional growth
+</span>
+
+  <span class="lang-es">
+✔ Crecimiento académico y profesional
+</span>
+    </div>
   </div>
 </section>
 
 <section id="services" class="services">
-  <h2>Services</h2>
+  <h2>
+  <span class="lang-en">
+Learning Options
+  </span>
+
+  <span class="lang-es">
+Opciones de aprendizaje
+  </span>
+
+  </h2>
 
   <div class="grid">
 
 <div class="card">
 
-  <h3>💡 English Lessons</h3>
+  <h3>
+  <span class="lang-en">
+💡 English Lessons
+  </span>
+
+  <span class="lang-es">
+💡 Clases de Inglés
+  </span>
+  </h3>
 
   <p>
-    Personalized English coaching designed to help language learners
-    improve fluency, confidence, and real communication skills step by step.
+  <span class="lang-en">
+    Classes designed to build fluency, confidence, and real-world communication skills through practical and engaging learning experiences.
+  </span>
+
+  <span class="lang-es">
+    Clases diseñadas para desarrollar fluidez, confianza y habilidades de comunicación para situaciones reales a través de experiencias de aprendizaje prácticas y dinámicas.
+  </span>
   </p>
 
   <button class="service-button"
           onclick="toggleService('english-details')">
 
+  <span class="lang-en">
     View Plans ▼
-
+  </span>
+  <span class="lang-es">
+    Ver Planes ▼
+  </span>
   </button>
 
-  <div class="service-details"
-       id="english-details">
+<div class="service-details"
+     id="english-details">
 
-    <ul>
+<ul>
 
 <li>
 
-  <strong>Starter Plan:</strong><br>
-  4 sessions per month
+  <strong>🌱Foundation Plan:</strong><br>
+
+  <span class="lang-en">
+    4 classes per month
+  </span>
+
+  <span class="lang-es">
+    4 clases al mes
+  </span>
+
+</ul>
 
   <div class="plan-prices">
-    <span>Online: $160.000 (COP)</span><br>
-    <span>In-Person: $200.000 (COP)</span>
+
+    <span class="lang-en">
+      💻Online: $160.000 (COP)
+    </span>
+
+    <span class="lang-es">
+      💻Virtual: $160.000 (COP)
+    </span>
+
+    <br>
+
+    <span class="lang-en">
+      🏠In-Person*: $200.000 (COP)
+    </span>
+
+    <span class="lang-es">
+      🏠Presencial*: $200.000 (COP)
+    </span>
+
   </div>
 
 </li>
 
-<li>
+<li><br>
 
-  <strong>Growth Plan:</strong><br>
-  8 sessions per month
+  <strong>↗️Growth Plan:</strong><br>
+
+  <span class="lang-en">
+    8 classes per month
+  </span>
+
+  <span class="lang-es">
+    8 clases al mes
+  </span>
 
   <div class="plan-prices">
-    <span>Online: $300.000 (COP)</span><br>
-    <span>In-Person: $380.000 (COP)</span>
+
+    <span class="lang-en">
+      💻Online: $300.000 (COP)
+    </span>
+
+    <span class="lang-es">
+      💻Virtual: $300.000 (COP)
+    </span>
+
+    <br>
+
+    <span class="lang-en">
+      🏠In-Person*: $380.000 (COP)
+    </span>
+
+    <span class="lang-es">
+      🏠Presencial*: $380.000 (COP)
+    </span>
+
   </div>
 
 </li>
 
-<li><strong>Available in</strong> Caldas - Sabaneta</li>
-
-<li><strong>Session Duration:</strong> 60 minutes</li>
+<br>
 
 <li>
-  <strong>Description:</strong>
 
-  <ul class="mini-list">
-    <li>Personalized lessons</li>
-    <li>Goal-based guidance</li>
-    <li>Speaking practice</li>
-    <li>Online learning materials</li>
-  </ul>
+  <span class="lang-en">
+    *In person available in
+  </span>
+
+  <span class="lang-es">
+    *Presencial disponible en
+  </span>
+
+  Caldas, La Estrella, Sabaneta.
+
+</li>
+<li>
+
+  <strong>
+    <span class="lang-en">60-minute classes</span>
+    <span class="lang-es">Clases de 60 minutos</span>
+  </strong>
+
+</li>
+
+<li>
+  <strong>
+  <span class="lang-en">Description:</span>
+  <span class="lang-es">Descripción</span>
+  </strong>
+
+ <ul class="mini-list">
+
+  <li>
+    <span class="lang-en">Personalized lessons</span>
+    <span class="lang-es">Clases personalizadas</span>
+  </li>
+
+  <li>
+    <span class="lang-en">Goal-based guidance</span>
+    <span class="lang-es">Orientación basada en objetivos</span>
+  </li>
+
+  <li>
+    <span class="lang-en">Speaking practice</span>
+    <span class="lang-es">Práctica conversacional</span>
+  </li>
+
+  <li>
+    <span class="lang-en">Online learning materials</span>
+    <span class="lang-es">Materiales virtuales de aprendizaje</span>
+  </li>
+<br>
 
 </li>
 
 </ul>
 
-    <a class="book-button"
-       href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20English%20Lessons.%0A%0A•%20Student%20age:%0A•%20Online%20or%20In-person:%0A•%20Main%20goal:%0A•%20Preferred%20schedule:"
-       target="_blank">
+<a class="book-button lang-en"
+   href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20English%20Lessons.%0A%0A•%20Student%20age:%0A•%20Online%20or%20In-person:%0A•%20Main%20goal:%0A•%20Preferred%20schedule:"
+   target="_blank">
 
-       Schedule your sessions
+  Schedule your classes
 
-    </a>
+</a>
+
+<a class="book-button lang-es"
+   href="https://wa.me/573215432240?text=Hola!%20Me%20gustaría%20recibir%20información%20sobre%20las%20clases%20de%20inglés.%0A%0A•%20Edad%20del%20estudiante:%0A•%20Virtual%20o%20Presencial:%0A•%20Objetivo%20principal:%0A•%20Horario%20preferido:"
+   target="_blank">
+
+  Agenda tus clases
+
+</a>
 
   </div>
 
@@ -978,11 +1455,25 @@ My approach is practical, personalized, and focused on real communication. I hel
 
    <div class="card">
 
-  <h3>🎓 Academic Support</h3>
+  
+
+<h3>
+  <span class="lang-en">
+🎓 Academic Support
+  </span>
+
+  <span class="lang-es">
+🎓 Apoyo Académico
+  </span>
+  </h3>
 
   <p>
-    Personalized and supportive English guidance for kids and teens to improve
-        school performance, communication skills, and confidence.
+  <span class="lang-en">
+    Personalized and supportive English guidance for kids and teens to support school success, communication skills, and confidence.
+  </span>
+  <span class="lang-es">
+    Apoyo y guía personalizada en inglés para niños y adolescentes, enfocada en fortalecer el desempeño escolar, las habilidades comunicativas y la confianza.
+  </span>
   </p>
 
   <button class="service-button"
@@ -999,51 +1490,132 @@ My approach is practical, personalized, and focused on real communication. I hel
 
 <li>
 
-  <strong>Support Plan:</strong><br>
-  4 sessions per month
+  <strong>🧩Support Plan:</strong><br>
+
+  <span class="lang-en">
+    4 sessions per month
+  </span>
+
+  <span class="lang-es">
+    4 sesiones al mes
+  </span>
 
   <div class="plan-prices">
-    <span>Online: $160.000 (COP)</span><br>
-    <span>In-Person: $200.000 (COP)</span>
+
+    <span class="lang-en">
+      💻Online: $160.000 (COP)
+    </span>
+
+    <span class="lang-es">
+      💻Virtual: $160.000 (COP)
+    </span>
+
+    <br>
+
+    <span class="lang-en">
+      🏠In-Person*: $200.000 (COP)
+    </span>
+
+    <span class="lang-es">
+      🏠Presencial*: $200.000 (COP)
+    </span>
+
   </div>
 
 </li>
 
-<li>
+<li><br>
 
-  <strong>Progress Plan:</strong><br>
-  8 sessions per month
+  <strong>📘Progress Plan:</strong><br>
+
+  <span class="lang-en">
+    8 sessions per month
+  </span>
+
+  <span class="lang-es">
+    8 sesiones al mes
+  </span>
 
   <div class="plan-prices">
-    <span>Online: $300.000 (COP)/month</span><br>
-    <span>In-Person: $380.000 (COP)/month</span>
+
+    <span class="lang-en">
+      💻Online: $300.000 (COP)
+    </span>
+
+    <span class="lang-es">
+      💻Virtual: $300.000 (COP)
+    </span>
+
+    <br>
+
+    <span class="lang-en">
+      🏠In-Person*: $380.000 (COP)
+    </span>
+
+    <span class="lang-es">
+      🏠Presencial*: $380.000 (COP)
+    </span>
+
   </div>
 
-</li>
+</li><br>
 
-<li><strong>Available in</strong> Caldas - Sabaneta</li>
-
-<li><strong>Session Duration:</strong> 60 minutes</li>
 <li>
-  <strong>Description:</strong>
-
-  <ul class="mini-list">
-    <li>Academic reinforcement</li>
-    <li>Support with challenging topics</li>
-    <li>Speaking practice</li>
-    <li>Confidence building</li>
-  </ul>
-
+      <span class="lang-en">*In person available in</span>
+    <span class="lang-es">*Presencial disponible en</span>
+    Caldas, La Estrella, Sabaneta. <br>
 </li>
 
+<li>
+
+  <strong>
+    <span class="lang-en">60-minute sessions</span>
+    <span class="lang-es">Sesiones de 60 minutos</span>
+  </strong>
+
+</li>
+<li>
+  <strong>
+    <span class="lang-en">Description:</span>
+    <span class="lang-es">Descripción:</span>
+  </strong>  
+
+ <ul class="mini-list">
+
+  <li>
+    <span class="lang-en">Academic reinforcement</span>
+    <span class="lang-es">Refuerzo académico</span>
+  </li>
+
+  <li>
+    <span class="lang-en">Support with challenging topics</span>
+    <span class="lang-es">Apoyo en temas complejos</span>
+  </li>
+
+  <li>
+    <span class="lang-en">Speaking practice</span>
+    <span class="lang-es">Práctica oral</span>
+  </li>
+
+  <li>
+    <span class="lang-en">Confidence building</span>
+    <span class="lang-es">Desarrollo de confianza</span>
+</li>
+<br>
 </ul>
 
-    <a class="book-button"
-       href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20Academic%20Support%20plans.%0A%0A•%20Student%20age:%0A•%20Online%20or%20In-person:%0A•%20Main%20goal:%0A•%20Preferred%20schedule:"
-       target="_blank">
+      <a class="book-button lang-en"
+   href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20Academic%20Support%20plans.%0A%0A•%20Student%20age:%0A•%20Online%20or%20In-person:%0A•%20Preferred%20schedule:"
+   target="_blank">
 
-       Schedule your sessions
+   Schedule your sessions
+</a>
 
+<a class="book-button lang-es"
+   href="https://wa.me/573215432240?text=Hola!%20Me%20gustaría%20recibir%20información%20sobre%20las%20sesiones%20de%20Apoyo%20Académico.%0A%0A•%20Edad%20del%20estudiante:%0A•%20Virtual%20o%20Presencial:%0A•%20Horario%20preferido:"
+   target="_blank">
+
+  Agenda tus sesiones
     </a>
 
   </div>
@@ -1055,8 +1627,14 @@ My approach is practical, personalized, and focused on real communication. I hel
   <h3>🎤 Language Practice</h3>
 
   <p>
+  <span class="lang-en">
     Guided speaking sessions in English, French or Spanish focused on improving fluency and confidence for
         interviews, presentations, travel, work, or everyday conversations.
+  </span>
+
+  <span class="lang-es">
+    Sesiones de conversación en inglés, francés o español enfocadas en desarrollar fluidez y confianza para entrevistas, presentaciones, viajes, trabajo o conversaciones cotidianas.
+  </span>
   </p>
 
   <button class="service-button"
@@ -1071,28 +1649,66 @@ My approach is practical, personalized, and focused on real communication. I hel
 
     <ul>
 <li>
-  <strong>Languages Available:</strong><br>
+  <strong>
+<span class="lang-en">
+Languages Available:
+  </span>
+<span class="lang-es">
+Idiomas disponibles:
+  </span>
+</strong><br>
 
-  <span class="language-tag english">EN English</span>
-  <span class="language-tag french">FR French</span>
-  <span class="language-tag spanish">ES Spanish</span>
+  <span class="language-tag english">English</span>
+  <span class="language-tag french">Français</span>
+  <span class="language-tag spanish">Español</span>
 
 </li>
       <li>
-  <strong>Online Conversation Session:</strong>
-  Flexible one-time conversation practice<br>
-  <span class="price">$45.000 (COP)/session</span>
+  <strong>
+<span class="lang-en">
+💬Language Practice (Online):
+  </span>
+<span class="lang-es">
+💬Práctica de Idiomas (Virtual)
+  </span>
+</strong>
+
+<span class="lang-en">
+  Flexible guided conversation practice
+  </span>
+<span class="lang-es">
+Práctica flexible de conversación guiada
+  </span>
+<br>
+  <span class="price">$45.000 (COP)</span>
+<li><strong>Session Duration:</strong> 50 minutes</li>
+
 </li>
 
 <li>
-  <strong>Online Speaking Coaching:</strong>
-  Personalized coaching for job interviews or academic presentations
-  (2-session package)<br>
-  <span class="price">$80.000 (COP) /package</span>
+<br>
+  <strong>
+<span class="lang-en">
+🧑‍💻Targeted Speaking Coaching
+  </span>
+<span class="lang-es">
+🧑‍💻Preparación para Comunicación Oral
+  </span>
+</strong>
+<span class="lang-en">
+  Focused preparation for job interviews or academic presentations through personalized speaking guidance.
+  (Includes 2 sessions)
+  </span>
+<span class="lang-es">
+Preparación enfocada para entrevistas laborales o presentaciones académicas mediante orientación personalizada en comunicación oral. (Incluye 2 sesiones)
+  </span>
+  <span class="price">$80.000 (COP) </span>
+
 </li>
       <li><strong>Session Duration:</strong> 50 minutes</li>
       <li><strong>Includes:</strong> personalized speaking practice focused on interviews, presentations, travel, work situations, or specific communication goals</li>
-    </ul>
+    
+</ul>
 
     <a class="book-button"
        href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20Language%20Practice%20sessions.%0A%20%0A•%20In%20English,%20French%20or%20Spanish?%0A•%20For%20an%20Adult?%20Teen?%20or%20Kid?%0A•%20Goal:%20Interview?%20Presentation?%20Other?%0A•%20Preferred%20Online%20schedule:"
@@ -1129,21 +1745,41 @@ My approach is practical, personalized, and focused on real communication. I hel
       </h2>
 
       <p>
-        C Global is more than language learning.
-        It is about developing confidence, global communication,
-        cultural understanding, and meaningful human connection.
-      </p>
+<span class="lang-en">
+  C Global is more than language learning.
+  It is about building confidence, developing communication skills,
+  and motivating to building meaningful connections through language.
+  </span>
+<span class="lang-es">
+C Global es mucho más que aprender idiomas.
+  Se trata de desarrollar confianza, fortalecer habilidades de comunicación
+  y motivar a crear conexiones significativas a través del lenguaje.
+  </span>
+</p>
 
-      <p>
-        The goal is to help people connect with the world
-        through English, French, and Spanish languages,
-        promoting professional and personal growth, and become part of something bigger.
-      </p>
+<p>
+<span class="lang-en">
+  Inspired by English, French, and Spanish language and culture,
+  the goal of this project is to help people grow personally,
+  academically, and professionally while communicating with greater
+  confidence, fluency, and cultural understanding.
+  </span>
+
+<span class="lang-es">
+Inspirado en el idioma y la cultura del inglés, francés y español,
+  este proyecto busca ayudar a las personas a crecer personal,
+  académica y profesionalmente mientras se comunican con mayor
+  confianza, fluidez y comprensión cultural.
+  </span>
+</p>
 
       <div class="concept-tags">
-        <span>Connection</span>
-        <span>Communication</span>
-        <span>Confidence</span>
+        <span class="lang-en">Connection</span>
+        <span class="lang-es">Conexión</span>
+        <span class="lang-en">Communication</span>
+        <span class="lang-es">Comunicación</span>
+        <span class="lang-en">Confidence</span>
+        <span class="lang-es">Confianza</span>
       </div>
 
     </div>
@@ -1153,18 +1789,30 @@ My approach is practical, personalized, and focused on real communication. I hel
 </section>
 <section id="testimonials" class="testimonials">
 
-  <h2>Testimonials</h2>
+  <h2>
+<span class="lang-en">Experiences</span>
+<span class="lang-es">Experiencias  </span>
+</h2>
 
   <div class="grid">
 
     <div class="card testimonial">
+<span class="lang-en">
       "I feel much more confident speaking English now.
-      Classes are practical and motivating."
+      Classes are practical and engaging."
+  </span>
+<span class="lang-es">
+"Ya me siento más seguro al hablar en inglés. Las clases son prácticas y entretenidas"
+  </span>
     </div>
 
     <div class="card testimonial">
-      "A great learning experience.
-      Classes are clear and adapted to my needs."
+<span class="lang-en">
+      "A great learning experience, and the best part is that classes are adapted to my needs."
+  </span>
+<span class="lang-es">
+"Es una experiencia de aprendizaje muy buena y lo mejor es que las clases se adptan a lo que necesito"
+  </span>
     </div>
 
   </div>
@@ -1173,16 +1821,36 @@ My approach is practical, personalized, and focused on real communication. I hel
 
 <section>
   <div class="card" style="text-align:center;">
-    <h2>Work With Me</h2>
-    <p>Start improving your communication and access new opportunities.</p>
-    <a class="cta"
+<h2>
+  <span class="lang-en">Work With Me</span>
+  <span class="lang-es">Trabajemos Juntos</span>
+</h2>
+
+<p>
+  <span class="lang-en">
+    Let’s help you communicate with confidence and grow through language.
+  </span>
+
+  <span class="lang-es">
+    Permíteme ayudarte a comunicarte con confianza y crecer a través del idioma.
+  </span>
+</p>
+
+<a class="cta whatsapp-link"
    href="https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20C%20Global%20services."
    target="_blank">
 
-   Contact
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-     alt="WhatsApp"
-     class="nav-whatsapp-icon">
+  <span class="lang-en">
+    Contact me
+  </span>
+
+  <span class="lang-es">
+    Contáctame
+  </span>
+
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+       alt="WhatsApp"
+       class="nav-whatsapp-icon">
 
 </a>
 
@@ -1227,6 +1895,52 @@ function toggleService(id) {
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
+
+function setLanguage(language) {
+
+const englishTexts = document.querySelectorAll('.lang-en');
+const spanishTexts = document.querySelectorAll('.lang-es');
+
+const whatsappButtons = document.querySelectorAll('.whatsapp-link');
+
+  if (language === 'es') {
+
+    englishTexts.forEach(text => {
+      text.style.display = 'none';
+    });
+
+    spanishTexts.forEach(text => {
+      text.style.display = 'inline';
+    });
+
+whatsappButtons.forEach(button => {
+  button.href =
+    "https://wa.me/573215432240?text=Hola!%20Me%20gustaría%20recibir%20información%20sobre%20las%20opciones%20de%20aprendizaje%20de%20C%20Global.";
+});
+
+  }
+
+  else {
+
+    englishTexts.forEach(text => {
+      text.style.display = 'inline';
+    });
+
+    spanishTexts.forEach(text => {
+      text.style.display = 'none';
+    });
+
+    whatsappButtons.forEach(button => {
+  button.href =
+    "https://wa.me/573215432240?text=Hello!%20I%20would%20like%20information%20about%20C%20Global%20Learning%20Options.";
+});
+
+
+  }
+
+}
+
+setLanguage('en');
 
 </script>
 
